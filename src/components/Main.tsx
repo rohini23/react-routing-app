@@ -1,40 +1,44 @@
-import React, { useMemo } from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useContext, useEffect, useMemo, useState } from "react";
+import { Route, Routes, useLocation, useParams } from "react-router-dom";
 import routesArr from "../constants/routes";
 import Breadcrumbs from "../components/Breadcrumbs";
+import Navigation from "./Navigation";
+import { authContextInterface } from "../interfaces";
+import { AuthContext } from "../context/authContext";
 
 const Main: React.FC = () => {
-  const getRoute = () => {
-    const routes: any[] = [];
+  const { isUnauth } = useContext(AuthContext) as authContextInterface;
+
+  const getRoutePath = () => {
+    const routesPath: any[] = [];
     routesArr.forEach((parentRoute) => {
-      let Component = parentRoute.component;
-      routes.push(
-        <Route
-          path={parentRoute.path}
-          key={`p-${parentRoute.path}`}
-          element={<Component />}
-        />
-      );
-      parentRoute?.routes.forEach((childRoute) => {
-        let Component = childRoute.component;
-        routes.push(
-          <Route
-            path={childRoute.path}
-            key={`c-${childRoute.path}`}
-            element={<Component />}
-          />
-        );
+      routesPath.push(parentRoute);
+      parentRoute?.routes?.forEach((childRoute) => {
+        routesPath.push(childRoute);
       });
     });
-    return routes;
+    return routesPath;
   };
-
-  const routes = useMemo(() => getRoute(), []);
+  const routesPath = useMemo(() => getRoutePath(), []);
 
   return (
-    <div className="main-wrapper">
-      <Breadcrumbs />
-      <Routes>{routes}</Routes>
+    <div className="app-wrapper">
+      {!isUnauth && <Navigation />}
+      <div className="main-wrapper">
+        {!isUnauth && <Breadcrumbs />}
+        <Routes>
+          {routesPath.map((route) => {
+            let Component = route.component;
+            return (
+              <Route
+                path={route.path}
+                key={`c-${route.path}`}
+                element={<Component />}
+              />
+            );
+          })}
+        </Routes>
+      </div>
     </div>
   );
 };

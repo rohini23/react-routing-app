@@ -89,10 +89,14 @@ const routesArr = [
       },
     ],
   },
-  // {
-  //   path: "*",
-  //   component: lazy(() => import("../pages/Dashboard")),
-  // },
+  {
+    path: "*",
+    locale: "404",
+    icon: "404",
+    component: lazy(() => import("../pages/404")),
+    name: "404",
+    hideInMenu: true,
+  },
 ];
 
 export default routesArr;

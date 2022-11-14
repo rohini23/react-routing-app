@@ -6,13 +6,16 @@ export interface NavItemProps {
   hideInMenu: boolean;
   icon: SVGAElement | string;
   exact: Boolean;
-  routes: Array<NavItemProps> | any[];
+  routes?: Array<NavItemProps> | any[];
   redirect?: string;
 }
-
 export interface navProps {
   name: String;
   path: String | Partial<String>;
   className?: String;
   activeClassName?: String;
+}
+export interface authContextInterface {
+  isUnauth?: boolean;
+  setUnauth?: Function;
 }

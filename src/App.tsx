@@ -1,20 +1,20 @@
-import React, { Suspense } from "react";
+import React, { createContext, Suspense, useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import Main from "./components/Main";
-import Navigation from "./components/Navigation";
+import { AuthContext } from "./context/authContext";
 
 function App() {
+  const [isUnauth, setUnauth] = useState(false);
   return (
     <div className="App">
-      <Router>
-        <Suspense fallback={<div>Loading...</div>}>
-          <div className="app-wrapper">
-            <Navigation />
+      <AuthContext.Provider value={{ isUnauth, setUnauth }}>
+        <Router>
+          <Suspense fallback={<div>Loading...</div>}>
             <Main />
-          </div>
-        </Suspense>
-      </Router>
+          </Suspense>
+        </Router>
+      </AuthContext.Provider>
     </div>
   );
 }

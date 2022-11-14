@@ -20,7 +20,7 @@ const NavItem: React.FC<NavItemProps> = (props: NavItemProps) => {
           className={"child-toggled nav-item-link"}
           activeClassName={"nav-item-active"}
         />
-        {props.routes.length ? (
+        {props?.routes?.length ? (
           <div className="toggle-btn" onClick={handleToggle}>
             {toggle ? (
               <img src={ArrowUp} height={10} width={10} />
@@ -32,7 +32,7 @@ const NavItem: React.FC<NavItemProps> = (props: NavItemProps) => {
           <></>
         )}
       </div>
-      {toggle && props.routes.length ? (
+      {toggle && props?.routes?.length ? (
         <>
           {props.routes.map(
             (route) =>
