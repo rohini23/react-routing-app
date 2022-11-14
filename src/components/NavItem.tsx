@@ -13,7 +13,7 @@ const NavItem: React.FC<NavItemProps> = (props: NavItemProps) => {
 
   return !props.hideInMenu ? (
     <div className="nav-item-container">
-      <div className="nav-item-wrapper">
+      <div className="nav-item-wrapper" onClick={handleToggle}>
         <Nav
           path={props.path}
           name={props.name}
@@ -21,7 +21,7 @@ const NavItem: React.FC<NavItemProps> = (props: NavItemProps) => {
           activeClassName={"nav-item-active"}
         />
         {props?.routes?.length ? (
-          <div className="toggle-btn" onClick={handleToggle}>
+          <div className="toggle-btn">
             {toggle ? (
               <img alt={""} src={ArrowUp} height={10} width={10} />
             ) : (

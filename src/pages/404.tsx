@@ -7,7 +7,9 @@ const PageNotFount: React.FC = () => {
   useEffect(() => {
     setUnauth && setUnauth(true);
   }, [setUnauth]);
-  return <div className="root">Page Not Fount</div>;
+  return <div className="root">Page Not Fount
+  <div>return to <a href="/dashboard">home</a></div>
+  </div>;
 };
 
 export default PageNotFount;
