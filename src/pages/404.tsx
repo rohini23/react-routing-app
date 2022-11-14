@@ -6,7 +6,7 @@ const PageNotFount: React.FC = () => {
   const { setUnauth } = useContext(AuthContext) as authContextInterface;
   useEffect(() => {
     setUnauth && setUnauth(true);
-  }, []);
+  }, [setUnauth]);
   return <div className="root">Page Not Fount</div>;
 };
 

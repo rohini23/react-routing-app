@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useMemo, useState } from "react";
-import { Route, Routes, useLocation, useParams } from "react-router-dom";
+import React, { useContext, useMemo } from "react";
+import { Route, Routes } from "react-router-dom";
 import routesArr from "../constants/routes";
 import Breadcrumbs from "../components/Breadcrumbs";
 import Navigation from "./Navigation";

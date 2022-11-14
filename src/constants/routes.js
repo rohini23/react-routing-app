@@ -11,13 +11,22 @@ const routesArr = [
     routes: [],
   },
   {
+    path: "/",
+    locale: "dashboard",
+    name: "Dashboard",
+    icon: "dashboard",
+    exact: true,
+    hideInMenu: true,
+    component: lazy(() => import("../pages/Dashboard")),
+    routes: [],
+  },
+  {
     path: "/dashboard",
     locale: "dashboard",
     name: "Dashboard",
     icon: "dashboard",
-    exact: true, // This route will only work for /dashboard . For
+    exact: true,
     hideInMenu: false,
-    // /dashboard/analysis or other this component will not be rendered
     component: lazy(() => import("../pages/Dashboard")),
     routes: [
       {
@@ -38,14 +47,14 @@ const routesArr = [
         exact: true,
         hideInMenu: false,
       },
-      // {
-      //   path: "/dashboard/workplace",
-      //   locale: "dashboard.workplace",
-      //   component: lazy(() => import("pages/dashboard/workplace")),
-      //   name: "workplace",
-      //   exact: true,
-      // hideInMenu: false,
-      // },
+      {
+        path: "/dashboard/workplace",
+        locale: "dashboard.workplace",
+        component: lazy(() => import("../pages/Workplace")),
+        name: "workplace",
+        exact: true,
+        hideInMenu: false,
+      },
     ],
   },
   {

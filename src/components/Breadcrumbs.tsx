@@ -2,21 +2,11 @@ import React, { useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import Nav from "./Nav";
 import ArrowRight from "../assets/icons/right-arrow.svg";
-// import routesArr from "../constants/routes";
 
 const Breadcrumbs: React.FC = () => {
   const location = useLocation();
 
   const pathArr = useMemo(() => location.pathname.split("/"), [location]);
-
-  // const routeObj = useMemo(() => {
-  //   routesArr.reduce((op, { path, routes }) => {
-  //     op[path] = path;
-  //     routes?.forEach((route) => {
-  //       route[path] = path;
-  //     });
-  //   }, {});
-  // }, []);
 
   return (
     <div className="breadcrumb-wrapper">
@@ -34,7 +24,7 @@ const Breadcrumbs: React.FC = () => {
                 <div className="breadcrumb-item-disabled">{item}</div>
               )}
               {pathArr.length - 1 > ind && (
-                <img src={ArrowRight} height={10} width={10} />
+                <img alt={""} src={ArrowRight} height={10} width={10} />
               )}
             </div>
           )

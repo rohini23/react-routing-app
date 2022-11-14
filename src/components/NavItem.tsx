@@ -23,9 +23,9 @@ const NavItem: React.FC<NavItemProps> = (props: NavItemProps) => {
         {props?.routes?.length ? (
           <div className="toggle-btn" onClick={handleToggle}>
             {toggle ? (
-              <img src={ArrowUp} height={10} width={10} />
+              <img alt={""} src={ArrowUp} height={10} width={10} />
             ) : (
-              <img src={ArrowDown} height={10} width={10} />
+              <img alt={""} src={ArrowDown} height={10} width={10} />
             )}
           </div>
         ) : (
